@@ -1,0 +1,11 @@
+.card-body {
+    text-align: left;
+}
+
+.card-button {
+    text-align: center;
+}
+
+.bg-light-gray {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+}
