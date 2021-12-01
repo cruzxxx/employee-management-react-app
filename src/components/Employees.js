@@ -10,12 +10,29 @@ const Employees = () => {
     const [employees, setEmployees] = useState([]);
 
     useEffect(() => {
-        fetch("https://payslip-fe-task-3emspw8.devlabs-projects.info/employee")
+        fetch("https://react-crud-operations-4972b-default-rtdb.europe-west1.firebasedatabase.app/employee.json")
             .then(res => res.json())
             .then(
                 (data) => {
                     setIsLoaded(true);
-                    setEmployees(data.data);
+                    console.log(data);
+
+                    //transform data object into array
+                    const loadedEmployees = [];
+
+                    //drill into into nested array inside data object
+                    for (const key in data) {
+                        loadedEmployees.push({
+                            id: key,
+                            firstName: data[key].firstName,
+                            lastName: data[key].lastName,
+                            age: data[key].age,
+                            job: data[key].job
+                        })
+                    }
+
+                    //final array is passed onto setEmployees state
+                    setEmployees(loadedEmployees);
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -33,7 +50,8 @@ const Employees = () => {
                 <Col md={{span: 6, offset: 3}}>
                 {employees.map(employee => (
                     <EmployeeCard
-                        key={employee._id}
+                        key={employee.id}
+                        id={employee.id}
                         firstName={employee.firstName}
                         lastName={employee.lastName}
                         age={employee.age}

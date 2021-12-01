@@ -2,6 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
+    Link,
 } from "react-router-dom";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -11,26 +12,34 @@ import './Home.css';
 
 import Employees from './Employees';
 import CreateEmployee from './CreateEmployee';
+import EditEmployee from './EditEmployee';
+import DeleteEmployee from "./DeleteEmployee";
 
-const Webpages = () => {
-    return(
+const Home = () => {
+    return (
         <div>
-            <Container className="pb-3" fluid>
-                <Row className="mb-4 header">
-                    <Col md={6}>
-                        <h3 className="text-white">Customer Management App</h3>
-                    </Col>
-                    <Col md={6}>
-                        <Button variant="light">+ Create Employee</Button>
-                    </Col>
-                </Row>
-            </Container>
             <Router>
-                <Route exact path="/" component={Employees} />
-                <Route path = "/create-employee" component={CreateEmployee} />
+                <Container className="pb-3" fluid>
+                    <Row className="mb-4 header">
+                        <Col md={6}>
+                            <Link to="/" className="header-text">
+                                <h3 className="text-white">Customer Management App</h3>
+                            </Link>
+                        </Col>
+                        <Col md={6}>
+                            <Link to="/create-employee">
+                                <Button variant="light">+ Create Employee</Button>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Container>
+                <Route exact path="/" component={Employees}/>
+                <Route path="/create-employee" component={CreateEmployee}/>
+                <Route path="/edit-employee/:id" component={EditEmployee}/>
+                <Route path="/delete-employee/:id" component={DeleteEmployee}/>
             </Router>
         </div>
 
     );
 };
-export default Webpages;
+export default Home;
