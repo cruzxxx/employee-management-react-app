@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import {Form} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import './CreateEmployee.css';
+import './AddEditEmployee.css';
 import {Link} from "react-router-dom";
 
 const CreateEmployee = () => {

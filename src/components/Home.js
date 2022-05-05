@@ -11,13 +11,15 @@ import Button from 'react-bootstrap/Button'
 import './Home.css';
 
 import Employees from './Employees';
-import CreateEmployee from './CreateEmployee';
-import EditEmployee from './EditEmployee';
-import DeleteEmployee from "./DeleteEmployee";
+import AddEditEmployee from './AddEditEmployee';
+
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
     return (
         <div>
+            <ToastContainer position="top-center"/>
             <Router>
                 <Container className="pb-3" fluid>
                     <Row className="mb-4 header">
@@ -34,9 +36,8 @@ const Home = () => {
                     </Row>
                 </Container>
                 <Route exact path="/" component={Employees}/>
-                <Route path="/create-employee" component={CreateEmployee}/>
-                <Route path="/edit-employee/:id" component={EditEmployee}/>
-                <Route path="/delete-employee/:id" component={DeleteEmployee}/>
+                <Route path="/create-employee" component={AddEditEmployee}/>
+                <Route path="/edit-employee/:id" component={AddEditEmployee}/>
             </Router>
         </div>
 
